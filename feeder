@@ -1,0 +1,8 @@
+#!/bin/bash
+
+directory=$(pwd)
+
+echo "Feeding urls....!"
+
+cat $directory/$1 | parallel -j 50 curl -L -o /dev/null {} -x 127.0.0.1:8080 -k -s
+
